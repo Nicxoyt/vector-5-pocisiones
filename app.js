@@ -11,6 +11,8 @@ function comprobarCodigo() {
     let may = -999
     let men = 999
     let suma = 0;
+    let acum = 0;
+    let porc = 0;
     let posi = vec.length + 1;
     if (isNaN(textoUsuario)) {
         parrafoResultado.textContent = "Por favor escribe un numero valido.";
@@ -18,7 +20,7 @@ function comprobarCodigo() {
         return;
     }
     vec.push(textoUsuario);
-    parrafoResultado.textContent = vec ;
+    parrafoResultado.textContent = "[" + vec + "]" ;
     document.getElementById("escoja").value="";
     pipi.placeholder = "escoja el numero de la pocision " + (posi + 1)
 
@@ -38,9 +40,16 @@ function comprobarCodigo() {
             suma = suma + vec[i];
         }
         prom=suma/5;
+        for (let i = 0; i < vec.length; i++) {
+            if (vec[i] > prom) {
+                acum += 1;
+            }
+        }
+        porc = acum/5*100;
         a.textContent = "el numero mayor es " + may ;
         b.textContent = "el numero menor es " + men ;
         c.textContent = "el promedio es " + prom ;
+        d.textContent = "porcentaje de mayores a el promedio es: " + porc + "%";
         return;
     }
 }
